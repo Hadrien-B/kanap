@@ -33,9 +33,7 @@ fetch("http://localhost:3000/api/products/" + idProduct)
         const productDescription = document.getElementById("description");
         productDescription.innerHTML = sofa.description;
 
-        /*Ajout des couleurs*/
-        const colors = sofa.colors;
-        let textColors = "";
+        
 
         /*Création d'une boucle pour récupérer toutes les couleurs disponibles*/
         for (let colors of sofa.colors){
