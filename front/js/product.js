@@ -20,7 +20,7 @@ fetch("http://localhost:3000/api/products/" + idProduct)
         document.querySelector(".item__img").appendChild(productImg);
         productImg.src = sofa.imageUrl;
         productImg.alt = sofa.altTxt;
-        
+
         /*Ajout du nom du canapé*/
         const productTitle = document.getElementById("title");
         productTitle.innerHTML = sofa.name;
@@ -33,10 +33,10 @@ fetch("http://localhost:3000/api/products/" + idProduct)
         const productDescription = document.getElementById("description");
         productDescription.innerHTML = sofa.description;
 
-        
+
 
         /*Création d'une boucle pour récupérer toutes les couleurs disponibles*/
-        for (let colors of sofa.colors){
+        for (let colors of sofa.colors) {
             console.table(colors);
             let productColors = document.createElement("option");
             document.querySelector("#colors").appendChild(productColors);
@@ -45,6 +45,12 @@ fetch("http://localhost:3000/api/products/" + idProduct)
         }
 
     })
-    .catch(function(error) {
-        console.error(error)
+    .catch(function (error) {
+        console.error("Il semblerait qu'il y ait un problème")
     })
+
+
+
+
+
+
