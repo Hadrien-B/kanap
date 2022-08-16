@@ -71,12 +71,12 @@ function getColor (Array,value,id){
 
 let addToCart = document.getElementById("addToCart");
 
-//On définit la fonction d'ajout au panier en écoutant le 'click' utilisateur sur le bouton 'Ajouter au panier'
+//Fonction d'ajout au panier en écoutant le 'click' utilisateur sur le bouton 'Ajouter au panier'
 addToCart.addEventListener('click',function () {
 
   let name = document.getElementById('title').textContent;
   
-  //On définit le format de l'objet qu'on souhaite avoir dans le panier
+  //Format de l'objet qu'on souhaite avoir dans le panier
   let sofa = {
     id : idProduct,
     color: colors.value,
@@ -84,11 +84,11 @@ addToCart.addEventListener('click',function () {
     name : name,
   };
   
-//Pop Up de confirmation
+//Pop Up de confirmation et ajout au panier
 
-  //Condition, si la quantité est comprise entre 1 et 100 on ajoute le produit au panier ou alors on incrémente la quantité
+  //Si la quantité choisie est comprise entre 1 et 100
   if (quantity.value >= 1 && quantity.value <= 100){
-    //si il y'a déjà un panier dans le local storage
+    //Quantité déjà présente dans le localstorage
     if(localStorage.getItem('panier')){
       let cartStorage = JSON.parse(localStorage.getItem('panier'));
       if (getArticle(cartStorage,sofa.id)){
