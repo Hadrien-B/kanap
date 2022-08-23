@@ -284,7 +284,7 @@ btnOrder.addEventListener("click", (event) => {
 
   /* FIN GESTION DU FORMULAIRE */
 
-  /* REQUÊTE DU SERVEUR ET POST DES DONNÉES */
+  /* Envoi d'une requête au serveur afin de transmettre les données*/
   function sendToServer() {
     const sendToServer = fetch("http://localhost:3000/api/products/order", {
       method: "POST",
@@ -309,7 +309,7 @@ btnOrder.addEventListener("click", (event) => {
   }
 });
 
-/* FIN REQUÊTE DU SERVEUR ET POST DES DONNÉES */
+
 
 // Maintenir le contenu du localStorage dans le champs du formulaire
 
