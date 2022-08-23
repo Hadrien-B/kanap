@@ -20,7 +20,7 @@ async function displayCart() {
   } else {
     console.log("Des produits sont présents dans le panier");
   }
-  
+
   // Si le panier contient des produits
   for (i = 0; i < cart.length; i++) {
     const product = await getProductById(cart[i].id);
@@ -108,7 +108,7 @@ function changeQuantity() {
         }
         return item;
       });
-      
+
       let itemsStr = JSON.stringify(items);
       localStorage.setItem("panier", itemsStr);
       // Raffraichissement de la page "Pannier"
@@ -129,9 +129,9 @@ function deleteItem() {
         (element) => !(element.id == deleteId && element.color == deleteColor)
       );
       console.log(cart);
-      
+
       localStorage.setItem("panier", JSON.stringify(cart));
-       // Raffraichissement de la page "Pannier"
+      // Raffraichissement de la page "Pannier"
       location.reload();
       alert("L'article a été supprimé du panier.");
     });
@@ -286,7 +286,7 @@ btnOrder.addEventListener("click", (event) => {
 
   /* Envoi d'une requête au serveur afin de transmettre les données*/
   function sendToServer() {
-    const sendToServer = fetch("http://localhost:3000/api/products/order", {
+    fetch("http://localhost:3000/api/products/order", {
       method: "POST",
       body: JSON.stringify({ contact, products }),
       headers: {
