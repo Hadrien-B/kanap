@@ -25,7 +25,6 @@ async function displayCart() {
   for (i = 0; i < cart.length; i++) {
     const product = await getProductById(cart[i].id);
     let price = (product.price);
-    console.log(new Intl.NumberFormat().format(price));
     const totalPriceItem = (product.price *= cart[i].quantity);
 
     cartArray += `<article class="cart__item" data-id="${cart[i].id}" data-color="${cart[i].color}">
@@ -53,6 +52,7 @@ async function displayCart() {
                   </div>
                   </article>`;
   }
+
   // Boucle d'affichage du nombre total d'articles dans le panier et de la somme totale
   let totalQuantity = 0;
   let totalPrice = 0;
@@ -166,7 +166,7 @@ btnOrder.addEventListener("click", (event) => {
 
   // Regex du champ "Adresse"
   const adressRegex = (value) => {
-    return /^[a-zA-Z0-9.,-_ ]{5,50}[]{0,2}$/.test(value);
+    return /^[a-zA-Z0-9-_ ]{5,50}[]{0,2}$/.test(value);
   };
 
   // Regex du champ "Email"
@@ -256,7 +256,7 @@ btnOrder.addEventListener("click", (event) => {
       document.querySelector("#emailErrorMsg").textContent = "";
       return true;
     } else {
-      inputMail.style.backgroundColor = "#FF6F61";
+      inputMail.style.backgroundColor = "#red";
 
       document.querySelector("#emailErrorMsg").textContent =
         "L'email renseigné est invalide, ex: contact@kanap.com";
