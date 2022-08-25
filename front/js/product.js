@@ -15,7 +15,7 @@ fetch("http://localhost:3000/api/products/" + idProduct)
     const description = document.getElementById("description");
     const itemImg = document.getElementsByClassName("item__img");
     let price = document.getElementById("price");
-    
+
 
     //Insertion les constantes dans le code HTML
     description.innerHTML = sofa.description;
@@ -24,44 +24,44 @@ fetch("http://localhost:3000/api/products/" + idProduct)
 
 
     let text = "";
-    text = text +`<img src="${sofa.imageUrl}"alt ="${sofa.altTxt}"></img>`;
+    text = text + `<img src="${sofa.imageUrl}"alt ="${sofa.altTxt}"></img>`;
     itemImg[0].innerHTML = text;
-   
+
 
     //Initialisation de la constante utilisée pour les couleurs
     const colors = sofa.colors;
     let textColors = " ";
 
     //Boucle récupérant chaque couleur disponible
-    colors.forEach((colors,index) =>
-    textColors = textColors + `<option value="${colors}">${colors}</option>`);
+    colors.forEach((colors, index) =>
+      textColors = textColors + `<option value="${colors}">${colors}</option>`);
 
     //Insertion des couleurs dans le menu déroulant
     const colorSelect = document.getElementById("colors");
-      colorSelect.innerHTML = textColors
-    
-  })  
+    colorSelect.innerHTML = textColors
+
+  })
   .catch(function(error) {
     console.error(error)
-  }) 
+  })
 
 //Tableau
-function getArticle (Array,value){
+function getArticle(Array, value) {
   let condition = false
 
-  for(elem of Array){
-    if (elem.id == value){
+  for (let elem of Array) {
+    if (elem.id == value) {
       return condition = true
     }
   }
   return condition
 };
 
-function getColor (Array,value,id){
+function getColor(Array, value, id) {
   let condition = false
 
-  for(elem of Array){
-    if (elem.color == value && elem.id == id){
+  for (let elem of Array) {
+    if (elem.color == value && elem.id == id) {
       return condition = true
     }
   }
@@ -72,51 +72,51 @@ function getColor (Array,value,id){
 let addToCart = document.getElementById("addToCart");
 
 //Fonction d'ajout au panier en écoutant le 'click' utilisateur sur le bouton 'Ajouter au panier'
-addToCart.addEventListener('click',function () {
+addToCart.addEventListener('click', function () {
 
   let name = document.getElementById('title').textContent;
-  
+
   //Format de l'objet qu'on souhaite avoir dans le panier
   let sofa = {
-    id : idProduct,
+    id: idProduct,
     color: colors.value,
     quantity: parseInt(quantity.value),
-    name : name,
+    name: name,
   };
-  
-//Pop Up de confirmation et ajout au panier
+
+  //Pop Up de confirmation et ajout au panier
 
   //Si la quantité choisie est comprise entre 1 et 100
-  if (quantity.value >= 1 && quantity.value <= 100){
+  if (quantity.value >= 1 && quantity.value <= 100) {
     //Quantité déjà présente dans le localstorage
-    if(localStorage.getItem('panier')){
+    if (localStorage.getItem('panier')) {
       let cartStorage = JSON.parse(localStorage.getItem('panier'));
-      if (getArticle(cartStorage,sofa.id)){
-        if (getColor(cartStorage,sofa.color,sofa.id)){
-            cartStorage.forEach(element => {
-            if (element.id == sofa.id && element.color == sofa.color){
+      if (getArticle(cartStorage, sofa.id)) {
+        if (getColor(cartStorage, sofa.color, sofa.id)) {
+          cartStorage.forEach(element => {
+            if (element.id == sofa.id && element.color == sofa.color) {
               element.quantity += sofa.quantity
-              localStorage.setItem('panier',JSON.stringify(cartStorage));
-             alert('Votre commande a été ajoutée au panier');
+              localStorage.setItem('panier', JSON.stringify(cartStorage));
+              alert('Votre commande a été ajoutée au panier');
             }
           })
-        }else{
-            cartStorage.push(sofa);
-          localStorage.setItem('panier',JSON.stringify(cartStorage));
+        } else {
+          cartStorage.push(sofa);
+          localStorage.setItem('panier', JSON.stringify(cartStorage));
           alert('Votre commande a été ajoutée au panier');
         }
-      }else{
+      } else {
         cartStorage.push(sofa);
-      localStorage.setItem('panier',JSON.stringify(cartStorage));
+        localStorage.setItem('panier', JSON.stringify(cartStorage));
+      }
+    } else {
+      let cartStorage = [];
+      cartStorage.push(sofa);
+      localStorage.setItem('panier', JSON.stringify(cartStorage));
+      alert('Votre commande a été ajoutée au panier');
+      // console.log('le panier est vide')
     }
-  }else{
-    let cartStorage = [];
-    cartStorage.push(sofa);
-    localStorage.setItem('panier',JSON.stringify(cartStorage));
-    alert('Votre commande a été ajoutée au panier');
-    // console.log('le panier est vide')
-    }
-  }else{
+  } else {
     alert("Veuillez choisir un nombre d'article compris entre 1 et 100")
   }
 });

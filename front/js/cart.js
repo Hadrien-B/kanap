@@ -292,6 +292,9 @@ btnOrder.addEventListener("click", (event) => {
       headers: {
         "Content-Type": "application/json",
       },
+      catch(error){
+        console.error(error)
+      }
     })
       // Récupération et stockage de la réponse de l'API (orderId)
       .then((response) => {
@@ -306,8 +309,10 @@ btnOrder.addEventListener("click", (event) => {
     if (orderId != "") {
       location.href = "confirmation.html?id=" + orderId;
     }
-  }
+  }  
 });
+
+
 
 
 
