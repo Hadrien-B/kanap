@@ -114,7 +114,6 @@ addToCart.addEventListener('click', function () {
       cartStorage.push(sofa);
       localStorage.setItem('panier', JSON.stringify(cartStorage));
       alert('Votre commande a été ajoutée au panier');
-      // console.log('le panier est vide')
     }
   } else {
     alert("Veuillez choisir un nombre d'article compris entre 1 et 100")
