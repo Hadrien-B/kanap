@@ -87,14 +87,14 @@ addToCart.addEventListener('click', function () {
   //Pop Up de confirmation et ajout au panier
 
   //Si la quantité choisie est comprise entre 1 et 100
-  if (quantity.value >= 1 && quantity.value <= 100) {
+  if (quantity.value >= 1 && quantity.value <= 100 ) {
     //Quantité déjà présente dans le localstorage
     if (localStorage.getItem('panier')) {
       let cartStorage = JSON.parse(localStorage.getItem('panier'));
       if (getArticle(cartStorage, sofa.id)) {
         if (getColor(cartStorage, sofa.color, sofa.id)) {
           cartStorage.forEach(element => {
-            if (element.id == sofa.id && element.color == sofa.color) {
+            if (element.id == sofa.id && element.color == sofa.color ) {
               element.quantity += sofa.quantity
               localStorage.setItem('panier', JSON.stringify(cartStorage));
               alert('Votre commande a été ajoutée au panier');
