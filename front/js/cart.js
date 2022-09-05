@@ -278,7 +278,7 @@ btnOrder.addEventListener("click", (event) => {
     localStorage.setItem("contact", JSON.stringify(contact));
 
     document.querySelector("#order").value =
-      "Votre commande et vos informations sont validées\n Cliquez pour valider !";
+      "Vos coordonnées sont validées\n Cliquez-ici pour valider votre commande!";
     sendToServer();
   } else {
     error("Veuillez bien remplir le formulaire");
