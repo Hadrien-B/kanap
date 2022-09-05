@@ -35,7 +35,7 @@ async function displayCart() {
                       <div class="cart__item__content__description">
                           <h2>${product.name}</h2>
                           <p>${cart[i].color}</p>
-                          <p>Prix unitaire: ${price}€</p>
+                            <p>Prix unitaire: ${price}€</p>
                       </div>
                       <div class="cart__item__content__settings">
                         <div class="cart__item__content__settings__quantity">
