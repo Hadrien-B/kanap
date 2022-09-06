@@ -71,7 +71,7 @@ function getColor(Array, value, id) {
 
 let addToCart = document.getElementById("addToCart");
 
-//Fonction d'ajout au panier en écoutant le 'click' utilisateur sur le bouton 'Ajouter au panier'
+//Fonction d'ajout au panier en écoutant le 'clic' utilisateur sur le bouton 'Ajouter au panier'
 addToCart.addEventListener('click', function () {
 
   let name = document.getElementById('title').textContent;
